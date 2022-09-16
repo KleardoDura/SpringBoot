@@ -2,6 +2,10 @@ package com.example.demo_API4.models;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.Entity;
 import javax.persistence.*;
@@ -29,10 +33,9 @@ public class Account {
     @Column(name="amount")
     private long amount;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(name="acc_open_date")
-    private String acc_open_date;
-
-
+    private Date acc_open_date;
 
 
     public long getAccount_no() {
@@ -78,11 +81,11 @@ public class Account {
         this.amount = amount;
     }
 
-    public String getAcc_open_date() {
+    public Date getAcc_open_date() {
         return acc_open_date;
     }
 
-    public void setAcc_open_date(String acc_open_date) {
+    public void setAcc_open_date(Date acc_open_date) {
         this.acc_open_date = acc_open_date;
     }
 }

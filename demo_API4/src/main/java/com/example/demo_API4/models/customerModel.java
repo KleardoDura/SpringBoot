@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.example.demo_API4.models.Account;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,15 +31,16 @@ public class customerModel {
     @Column(name="lastName")
     private String lastName;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(name="birthday")
-    private String birthday;
+    private Date birthday;
     @Column(name="email")
     private String email;
     @Column(name="phone_no")
     private String phone_no;
 
 
-    @OneToMany(targetEntity = Account.class,cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Account.class,fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="cust_no",referencedColumnName ="customer_no" )
     private List<Account> account;
 
@@ -51,7 +53,7 @@ public class customerModel {
         this.account = account;
     }
 
-    //
+
     public long getCustomer_no(){//duhet string
         return customer_no;
     }
@@ -76,10 +78,10 @@ public class customerModel {
     }
 
     //
-    public String getBirthday(){
+    public Date getBirthday(){
         return birthday;
     }
-    public void setBirthday(String birthday){
+    public void setBirthday(Date birthday){
         this.birthday=birthday;
     }
 
