@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.Entity;
@@ -16,7 +17,7 @@ import java.io.Serializable;
 public class Account {
     @Id
    // @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="account_no",nullable = false)
+    @Column(name="account_no")
     private long  account_no;
 
     @Column(name="branch_code")
@@ -24,7 +25,7 @@ public class Account {
 
 
 
-    @Column(name="cust_no",nullable = false)
+    @Column(name="cust_no")
     private long cust_no;
 
     @Column(name="ccy")
@@ -37,6 +38,22 @@ public class Account {
     @Column(name="acc_open_date")
     private Date acc_open_date;
 
+    /*
+    @ManyToOne(targetEntity = customerModel.class,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @JoinColumn(name="cust_no",referencedColumnName ="customer_no",insertable = false,updatable = false )
+    public customerModel customer;
+
+    @JsonIgnoreProperties({"accounts"})
+    public customerModel getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(customerModel customer) {
+        this.customer = customer;
+    }
+
+     */
 
     public long getAccount_no() {
         return account_no;

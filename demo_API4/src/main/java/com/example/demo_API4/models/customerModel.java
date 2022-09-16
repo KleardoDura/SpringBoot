@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.example.demo_API4.models.Account;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,7 @@ import javax.persistence.Entity;
 public class customerModel {
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="customer_no",nullable = false)
+    @Column(name="customer_no")
     private long  customer_no;
 
     @Column(name="firstName")
@@ -40,9 +41,12 @@ public class customerModel {
     private String phone_no;
 
 
-    @OneToMany(targetEntity = Account.class,fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(targetEntity = Account.class,fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true )
     @JoinColumn(name="cust_no",referencedColumnName ="customer_no" )
-    private List<Account> account;
+
+
+
+    public List<Account> account;
 
 
     public List<Account> getAccount() {

@@ -36,6 +36,7 @@ public class AccServiceClass implements AccServiceInter {
             accountUpdate.setAcc_open_date(account.getAcc_open_date());
             accountUpdate.setCcy(account.getCcy());
             accountUpdate.setAmount(account.getAmount());
+          //  accountUpdate.setCustomer(account.getCustomer());
             accountRepository.save(accountUpdate);
             return accountUpdate;
         }
