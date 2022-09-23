@@ -22,21 +22,7 @@ public class CusDtoClass {
 
     private ModelMapper modelMapper;
 
-    private CustomerDto convertEntityToDto(customerModel customer ){
-        modelMapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.LOOSE);
-        CustomerDto customerDto = new CustomerDto();
-        customerDto= modelMapper.map(customer,CustomerDto.class);
-        return customerDto;
-    }
 
-    private customerModel convertDtoToEntity(CustomerDto customerDTO){
-        modelMapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.LOOSE);
-        customerModel customer = new customerModel();
-        customer = modelMapper.map(customerDTO, customerModel.class);
-        return customer;
-    }
 
     private CustomerDto convertEntityToDto2(customerModel  customer ){
         CustomerDto customerDto = new CustomerDto();

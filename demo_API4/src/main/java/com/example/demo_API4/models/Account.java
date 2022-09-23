@@ -5,7 +5,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.Entity;
@@ -38,22 +38,7 @@ public class Account {
     @Column(name="acc_open_date")
     private Date acc_open_date;
 
-    /*
-    @ManyToOne(targetEntity = customerModel.class,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 
-    @JoinColumn(name="cust_no",referencedColumnName ="customer_no",insertable = false,updatable = false )
-    public customerModel customer;
-
-    @JsonIgnoreProperties({"accounts"})
-    public customerModel getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(customerModel customer) {
-        this.customer = customer;
-    }
-
-     */
 
     public long getAccount_no() {
         return account_no;

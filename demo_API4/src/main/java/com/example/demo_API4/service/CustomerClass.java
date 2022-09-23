@@ -45,7 +45,7 @@ public class CustomerClass implements  CustemerServiceInter{
              customerUpdate.setBirthday(customer.getBirthday());
              customerUpdate.setEmail(customer.getEmail());
              customerUpdate.setPhone_no(customerUpdate.getPhone_no());
-             customerUpdate.setAccount(customerUpdate.getAccount());
+             customerUpdate.setAccount(customer.getAccount());
              customerRepository.save(customerUpdate);
              return customerUpdate;
 
